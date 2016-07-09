@@ -1,0 +1,119 @@
+.header-user-photo {
+  float: right;
+  width: 40px;
+  height: 40px;
+  margin: 10px;
+  border-radius: 50%;
+  border: 2px solid white;
+  background: #eee;
+  overflow: hidden;
+  vertical-align: top;
+
+  img {
+    min-width: 100%;
+    width: 100%;
+    min-height: 100%;
+  }
+}
+
+.header-user-detail {
+  float: right;
+  margin-top: 10px;
+  margin-right: 5px;
+
+  span {
+    margin-bottom: 2px;
+    display: block;
+    text-align: right;
+
+    i {
+      font-size: .8em;
+    }
+  }
+}
+
+.news-list {
+  .news-item {
+    background: #f6f6f6;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: $border-radius;
+
+    .date {
+      display: inline-block;
+      color: $second-color;
+      text-align: center;
+      font-weight: bold;
+      margin-right: 20px;
+
+      .day {
+        font-size: 40px;
+      }
+      .month {
+        text-transform: uppercase;
+        font-size: 12px;
+      }
+    }
+  }
+
+  .text {
+    display: inline-block;
+    vertical-align: top;
+  }
+
+  h1 {
+    color: $main-color;
+  }
+  h2 {
+    font-size: .7em;
+    font-weight: normal;
+    color: $second-color;
+  }
+}
+
+.card-center {
+  max-width: 350px;
+  margin: 50px auto;
+  margin-top: 100px;
+  padding: 15px;
+  border-radius: $border-radius;
+  background: #f6f6f6;
+}
+
+.form {
+  input {
+    width: 100%;
+    border: none;
+    padding: 10px;
+    font-size: 1.2em;
+    outline: none;
+    margin-bottom: 10px;
+  }
+
+  button {
+    background: $main-color;
+    color: white;
+    cursor: pointer;
+    width: 100%;
+    border: none;
+    padding: 10px;
+    font-size: 1.2em;
+  }
+}
+
+.sticky-footer {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+
+  .content-sticky {
+    flex: 1;
+  }
+}
+
+.footer {
+  padding: 10px;
+  text-align: center;
+  color: $second-color;
+  font-size: .8em;
+}
