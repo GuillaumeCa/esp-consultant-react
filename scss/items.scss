@@ -32,24 +32,24 @@
   }
 }
 
-.news-list {
-  .news-item {
+.list {
+  .list-item {
     background: #f6f6f6;
     padding: 10px;
     margin-bottom: 10px;
     border-radius: $border-radius;
 
-    .date {
+    .side-el {
       display: inline-block;
       color: $second-color;
       text-align: center;
       font-weight: bold;
       margin-right: 20px;
 
-      .day {
+      .head {
         font-size: 40px;
       }
-      .month {
+      .sub {
         text-transform: uppercase;
         font-size: 12px;
       }
@@ -59,6 +59,7 @@
   .text {
     display: inline-block;
     vertical-align: top;
+    width: calc(100% - 70px);
   }
 
   h1 {
@@ -68,16 +69,34 @@
     font-size: .7em;
     font-weight: normal;
     color: $second-color;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
+}
+
+.card {
+  min-height: 300px;
+
+  .card-top-detail {
+    display: block;
+    font-size: 14px;
+    color: $second-color;
+    margin-bottom: 10px;
+  }
+}
+
+.card, .card-center {
+  padding: 15px;
+  border-radius: $border-radius;
+  background: #f6f6f6;
+  margin-top: 20px;
 }
 
 .card-center {
   max-width: 350px;
   margin: 50px auto;
   margin-top: 100px;
-  padding: 15px;
-  border-radius: $border-radius;
-  background: #f6f6f6;
 }
 
 .form {
@@ -90,15 +109,29 @@
     margin-bottom: 10px;
   }
 
-  button {
-    background: $main-color;
-    color: white;
-    cursor: pointer;
-    width: 100%;
-    border: none;
-    padding: 10px;
-    font-size: 1.2em;
-  }
+}
+
+button, .button {
+  background: $main-color;
+  color: white;
+  cursor: pointer;
+  width: 100%;
+  border: none;
+  padding: 10px;
+  display: block;
+  text-align: center;
+  font-size: 1.2em;
+}
+
+.button-sm {
+  display: inline-block;
+  margin: 5px;
+  width: auto;
+  border-radius: $border-radius;
+}
+
+.button-grey {
+  background: #a3a3a3;
 }
 
 .sticky-footer {
@@ -116,4 +149,10 @@
   text-align: center;
   color: $second-color;
   font-size: .8em;
+}
+
+.text-info {
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 30px;
 }

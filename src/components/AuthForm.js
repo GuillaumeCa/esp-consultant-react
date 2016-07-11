@@ -1,32 +1,40 @@
 import React, { Component } from 'react';
-import login from '../model/LoginModel';
 import { Router, browserHistory } from 'react-router';
+import Auth from '../Auth';
 
 export default class AuthForm extends Component {
 
-  handleLogin() {
-    console.log();
-    login({
-      email: this.refs.emailTextInput.value,
-      password: this.refs.passwordTextInput.value
-    }, function (res) {
-      if (res.status === 200) {
+  constructor() {
+    super();
+    this.state = {
+      loggedIn: Auth.loggedIn()
+    }
+  }
+
+  handleSubmit(event) {
+    event.preventDefault();
+
+    const EMAIL = this.refs.email.value;
+    const PASS = this.refs.pass.value;
+
+    Auth.login(EMAIL, PASS, (loggedIn) => {
+      if (!loggedIn)
+        return this.setState({error: true});
         browserHistory.push('/');
-      } else {
-        browserHistory.push('/login');
-        alert('error')
-      }
-    })
-    console.log('login');
+    });
+
   }
 
   render() {
     return (
-      <div className="form">
-          <input type="text" placeholder="email" ref="emailTextInput"/>
-          <input type="password" ref="passwordTextInput" placeholder="password"/>
-          <button onClick={this.handleLogin.bind(this)}>Connexion</button>
-      </div>
+      <form className="form" onSubmit={this.handleSubmit.bind(this)}>
+          <input type="text" placeholder="email" ref="email"/>
+          <input type="password" ref="pass" placeholder="password"/>
+          <button type="submit">Connexion</button>
+          {this.state.error && (
+           <p>Bad login information</p>
+         )}
+    </form>
     )
   }
 }

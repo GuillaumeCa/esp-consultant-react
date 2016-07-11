@@ -1,20 +1,12 @@
 import React, { Component } from 'react';
+import { Router, Route, IndexRoute, Link } from 'react-router';
+import Auth from '../Auth';
 
 export default class Topbar extends Component {
 
-  showuUserDetail() {
-    if (this.props.user.loggedIn) {
-      return (
-        <div>          
-          <div className="header-user-photo">
-            <img src="img/me.jpg" alt="photo-profil"/>
-          </div>
-          <div className="header-user-detail">
-            <span>{this.props.user().fullname}Guillaume CARRE</span>
-            <span><i>deconnexion</i></span>
-          </div>
-        </div>
-      )
+  componentWillMount() {
+    this.state = {
+      loggedIn: Auth.loggedIn()
     }
   }
 
@@ -28,14 +20,20 @@ export default class Topbar extends Component {
           <div className="navbar-header">
             <div className="open-menu" onClick={this.toggleMenu}>☰</div>
             <a href="">Espace Consultant</a>
-          </div>
-          <div className="header-user-photo">
-            <img src="img/me.jpg" alt="photo-profil"/>
-          </div>
-          <div className="header-user-detail">
-            <span>Guillaume CARRE</span>
-            <span><i>deconnexion</i></span>
-          </div>
+        </div>
+        {
+          this.state.loggedIn ? (
+            <span>
+              <div className="header-user-photo">
+                <img src="/img/me.jpg" alt="photo-profil"/>
+              </div>
+              <div className="header-user-detail">
+                <span>Guillaume CARRE</span>
+                <span><Link to="/logout"><i>deconnexion</i></Link></span>
+              </div>
+            </span>
+        ) : null
+        }
       </nav>
     )
   }

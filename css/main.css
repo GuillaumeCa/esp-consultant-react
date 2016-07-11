@@ -43,7 +43,7 @@ ul {
   z-index: 0; }
 
 .sidebar {
-  width: 300px;
+  width: 250px;
   height: 100%;
   position: absolute;
   top: 0;
@@ -52,7 +52,8 @@ ul {
   background: #f6f6f6;
   color: #b3b3b3;
   font-size: 1.2em;
-  transition: transform .5s ease; }
+  transition: transform .5s ease;
+  overflow: auto; }
   .sidebar ul {
     margin: 10px 0; }
     .sidebar ul .active li {
@@ -66,7 +67,7 @@ ul {
 .contain {
   position: absolute;
   height: 100%;
-  left: 300px;
+  left: 250px;
   right: 0;
   z-index: 0;
   padding: 20px;
@@ -76,7 +77,7 @@ ul {
   .navbar-header .open-menu {
     display: inline; }
   .sidebar {
-    transform: translateX(-300px);
+    transform: translateX(-250px);
     box-shadow: 0 0 5px grey; }
     .sidebar.open {
       transform: translateX(0); }
@@ -109,42 +110,57 @@ ul {
     .header-user-detail span i {
       font-size: .8em; }
 
-.news-list .news-item {
+.list .list-item {
   background: #f6f6f6;
   padding: 10px;
   margin-bottom: 10px;
   border-radius: 5px; }
-  .news-list .news-item .date {
+  .list .list-item .side-el {
     display: inline-block;
     color: #7a7a7a;
     text-align: center;
     font-weight: bold;
     margin-right: 20px; }
-    .news-list .news-item .date .day {
+    .list .list-item .side-el .head {
       font-size: 40px; }
-    .news-list .news-item .date .month {
+    .list .list-item .side-el .sub {
       text-transform: uppercase;
       font-size: 12px; }
 
-.news-list .text {
+.list .text {
   display: inline-block;
-  vertical-align: top; }
+  vertical-align: top;
+  width: calc(100% - 70px); }
 
-.news-list h1 {
+.list h1 {
   color: #8E7CC3; }
 
-.news-list h2 {
+.list h2 {
   font-size: .7em;
   font-weight: normal;
-  color: #7a7a7a; }
+  color: #7a7a7a;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap; }
+
+.card {
+  min-height: 300px; }
+  .card .card-top-detail {
+    display: block;
+    font-size: 14px;
+    color: #7a7a7a;
+    margin-bottom: 10px; }
+
+.card, .card-center {
+  padding: 15px;
+  border-radius: 5px;
+  background: #f6f6f6;
+  margin-top: 20px; }
 
 .card-center {
   max-width: 350px;
   margin: 50px auto;
-  margin-top: 100px;
-  padding: 15px;
-  border-radius: 5px;
-  background: #f6f6f6; }
+  margin-top: 100px; }
 
 .form input {
   width: 100%;
@@ -154,14 +170,25 @@ ul {
   outline: none;
   margin-bottom: 10px; }
 
-.form button {
+button, .button {
   background: #8E7CC3;
   color: white;
   cursor: pointer;
   width: 100%;
   border: none;
   padding: 10px;
+  display: block;
+  text-align: center;
   font-size: 1.2em; }
+
+.button-sm {
+  display: inline-block;
+  margin: 5px;
+  width: auto;
+  border-radius: 5px; }
+
+.button-grey {
+  background: #a3a3a3; }
 
 .sticky-footer {
   display: flex;
@@ -175,6 +202,11 @@ ul {
   text-align: center;
   color: #7a7a7a;
   font-size: .8em; }
+
+.text-info {
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 30px; }
 
 .title-sec {
   color: #8E7CC3;

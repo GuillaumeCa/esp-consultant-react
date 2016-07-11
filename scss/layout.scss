@@ -27,7 +27,7 @@
 }
 
 .sidebar {
-  width: 300px;
+  width: 250px;
   height: 100%;
   position: absolute;
   top: 0;
@@ -37,6 +37,7 @@
   color: #b3b3b3;
   font-size: 1.2em;
   transition: transform .5s ease;
+  overflow: auto;
 
   ul {
     margin: 10px 0;
@@ -61,7 +62,7 @@
 .contain {
   position: absolute;
   height: 100%;
-  left: 300px;
+  left: 250px;
   right: 0;
   z-index: 0;
   padding: 20px;
@@ -77,7 +78,7 @@
   }
 
   .sidebar {
-    transform: translateX(-300px);
+    transform: translateX(-250px);
     box-shadow: 0 0 5px grey;
 
     &.open {

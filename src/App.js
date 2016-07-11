@@ -4,18 +4,19 @@ import { Router, Route, IndexRoute, Link, browserHistory, Redirect } from 'react
 import Layout from './Layout';
 import Accueil from './pages/Accueil';
 import Profil from './pages/Profil';
-import NewsDetail from './pages/NewsDetail';
-import Login from './pages/Login';
+import News from './pages/News';
+import { Login, Logout, NotFound } from './pages/AuthPages';
 
-import Counter from './Counter';
+import Auth from './Auth';
 
-// If you use React Router, make this component
-// render <Router> with your routes. Currently,
-// only synchronous routes are hot reloaded, and
-// you will see a warning from <Router> on every reload.
-// You can ignore this warning. For details, see:
-// https://github.com/reactjs/react-router/issues/2182
-
+function requireAuth(nextState, replace) {
+  if (!Auth.loggedIn()) {
+    replace({
+      pathname: '/login',
+      state: { nextPathname: nextState.location.pathname }
+    })
+  }
+}
 
 export default class App extends Component {
   render() {
@@ -23,11 +24,13 @@ export default class App extends Component {
       <Router history={browserHistory}>
         <Redirect from="/" to="accueil" />
         <Route path="login" component={Login} />
-        <Route path="/" component={Layout}>
+        <Route path="logout" component={Logout} />
+        <Route path="/" component={Layout} onEnter={requireAuth}>
           <Route path="accueil" component={Accueil} />
+          <Route path="accueil/news/:slug" component={News} />
           <Route path="profil" component={Profil} />
-          <Route path="news/:slug" component={NewsDetail} />
         </Route>
+        <Route path="*" component={NotFound} />
       </Router>
     );
   }
